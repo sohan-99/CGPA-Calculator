@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import CGPASummaryCard from "../components/CGPASummaryCard";
 
 interface Course {
@@ -222,22 +223,72 @@ export default function CGPACalculator() {
   }, [semesters, cgpa, totalCredits, isLoading]);
 
   const clearAllData = () => {
-    if (
-      window.confirm(
-        "Are you sure you want to clear all data? This action cannot be undone."
-      )
-    ) {
-      const initialSemester: Semester = {
-        id: `semester-${Date.now()}`,
-        name: "Semester 1",
-        courses: [],
-        gpa: 0,
-      };
-      setSemesters([initialSemester]);
-      setCGPA(0);
-      setTotalCredits(0);
-      localStorage.removeItem("cgpa-calculator-data");
-    }
+    // Show confirmation toast with action buttons
+    toast(
+      (t) => (
+        <div className="flex flex-col space-y-3">
+          <div className="flex items-center space-x-2">
+            <div className="flex-shrink-0">
+              <svg
+                className="h-6 w-6 text-red-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.996-.833-2.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"
+                />
+              </svg>
+            </div>
+            <div>
+              <p className="text-sm font-medium text-gray-900">
+                Clear all data?
+              </p>
+              <p className="text-sm text-gray-500">
+                This action cannot be undone.
+              </p>
+            </div>
+          </div>
+          <div className="flex space-x-2">
+            <button
+              onClick={() => {
+                toast.dismiss(t.id);
+                const initialSemester: Semester = {
+                  id: `semester-${Date.now()}`,
+                  name: "Semester 1",
+                  courses: [],
+                  gpa: 0,
+                };
+                setSemesters([initialSemester]);
+                setCGPA(0);
+                setTotalCredits(0);
+                localStorage.removeItem("cgpa-calculator-data");
+                toast.success("All data has been cleared successfully!", {
+                  duration: 100,
+                  icon: "🗑️",
+                });
+              }}
+              className="bg-red-600 text-white px-3 py-1.5 rounded-md text-sm font-medium hover:bg-red-700 transition-colors"
+            >
+              Yes, clear all
+            </button>
+            <button
+              onClick={() => toast.dismiss(t.id)}
+              className="bg-gray-200 text-gray-800 px-3 py-1.5 rounded-md text-sm font-medium hover:bg-gray-300 transition-colors"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      ),
+      {
+        duration: Infinity,
+        position: "top-center",
+      }
+    );
   };
 
   if (isLoading) {
@@ -438,9 +489,9 @@ export default function CGPACalculator() {
                               <input
                                 type="number"
                                 placeholder="Credits"
-                                min="0.5"
+                                min="0.25"
                                 max="6"
-                                step="0.5"
+                                step="0.25"
                                 value={course.credit || ""}
                                 onChange={(e) =>
                                   updateCourse(
@@ -724,16 +775,16 @@ export default function CGPACalculator() {
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-500">
                 Academic Grade Point Average Calculator - Built for students
-                with ❤️
               </p>
             </div>
             <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
               <span>📧 sohan75632@gmail.com</span>
-              <span>📱 +8801722562608</span>
+              {/* <span>📱 +8801722562608</span> */}
             </div>
           </div>
         </div>
       </footer>
+      <Toaster />
     </div>
   );
 }
