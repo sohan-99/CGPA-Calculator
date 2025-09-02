@@ -2,7 +2,7 @@
 
 A modern, user-friendly CGPA calculator designed for university students worldwide. Built with Next.js 15, TypeScript, Tailwind CSS, and React Hot Toast for a smooth, responsive, and interactive experience.
 
-![CGPA Calculator Preview](https://via.placeholder.com/800x400/3B82F6/FFFFFF?text=CGPA+Calculator+Preview)
+![CGPA Calculator Preview](https://cgpa-calculator7.vercel.app/)
 
 ## ✨ Features
 
