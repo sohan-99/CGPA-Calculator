@@ -780,6 +780,14 @@ export default function CGPACalculator() {
             <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
               <span>📧 sohan75632@gmail.com</span>
               {/* <span>📱 +8801722562608</span> */}
+              <a
+                href="https://github.com/sohan-99"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline dark:text-blue-400"
+              >
+                GitHub
+              </a>
             </div>
           </div>
         </div>
