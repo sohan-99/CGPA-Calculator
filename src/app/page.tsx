@@ -268,7 +268,7 @@ export default function CGPACalculator() {
                   CGPA Calculator
                 </h1>
                 <p className="text-sm text-blue-600 dark:text-blue-400 font-medium">
-                  Pundra University of Science & Technology
+                  Academic Grade Point Average Calculator
                 </p>
               </div>
             </div>
@@ -508,7 +508,7 @@ export default function CGPACalculator() {
                           </div>
                         ))}
 
-                        <div className="mt-4 flex justify-center">
+                        <div className="mt-4 flex justify-center items-center space-x-4">
                           <button
                             onClick={() => addCourse(semester.id)}
                             className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
@@ -528,6 +528,23 @@ export default function CGPACalculator() {
                             </svg>
                             <span>Add Course</span>
                           </button>
+
+                          <div className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-lg shadow-md">
+                            <svg
+                              className="w-5 h-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                              />
+                            </svg>
+                            <span>Total CGPA: {cgpa.toFixed(2)}</span>
+                          </div>
                         </div>
                       </div>
                     )}
@@ -567,10 +584,10 @@ export default function CGPACalculator() {
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
-                  Pundra University Grading Scale
+                  University Grading Scale
                 </h2>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Official grading system and performance indicators
+                  Standard grading system and performance indicators
                 </p>
               </div>
             </div>
@@ -703,15 +720,16 @@ export default function CGPACalculator() {
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-center md:text-left mb-4 md:mb-0">
               <p className="text-gray-600 dark:text-gray-400">
-                © 2024 Pundra University of Science & Technology
+                © 2025 CGPA Calculator
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-500">
-                CGPA Calculator - Built for students with ❤️
+                Academic Grade Point Average Calculator - Built for students
+                with ❤️
               </p>
             </div>
             <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
-              <span>📧 support@pust.ac.bd</span>
-              <span>📱 +880-XXX-XXXXXX</span>
+              <span>📧 sohan75632@gmail.com</span>
+              <span>📱 +8801722562608</span>
             </div>
           </div>
         </div>
